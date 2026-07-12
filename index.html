@@ -248,8 +248,8 @@
 
 <script>
   // Récupère la dernière version publiée sur GitHub Releases et met à jour
-  // le bouton (lien direct .exe) + les liens macOS. En cas d'échec, le bouton
-  // garde son lien vers la page "latest" de GitHub.
+  // le bouton (lien direct .exe). En cas d'échec, le bouton garde son lien
+  // vers la page "latest" de GitHub.
   fetch('https://api.github.com/repos/Abdoul123-info/doulbrowser/releases/latest')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(rel){
