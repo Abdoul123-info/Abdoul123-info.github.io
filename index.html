@@ -237,7 +237,7 @@
       </details>
       <details>
         <summary>Et sur Mac ?</summary>
-        <p>Une version macOS est disponible sur la page de téléchargement (Apple Silicon et Intel). La version Windows reste la plus complète.</p>
+        <p>Une version macOS <b>bêta</b> est disponible (Apple Silicon et Intel). Comme elle n'est pas encore signée par Apple, macOS peut afficher « DoulGet est endommagé » ou « développeur non vérifié » au premier lancement : allez dans Réglages Système → Confidentialité et sécurité → « Ouvrir quand même » (ou clic droit sur l'app → Ouvrir). L'installation en 1 clic de l'extension n'est pas encore disponible sur Mac. La version Windows reste la version de référence.</p>
       </details>
     </div>
   </div>
@@ -277,7 +277,7 @@
         var parts=[];
         if (macArm) parts.push('<a href="'+macArm.browser_download_url+'">Apple Silicon</a>');
         if (macX64) parts.push('<a href="'+macX64.browser_download_url+'">Intel</a>');
-        document.getElementById('macLine').innerHTML = 'Aussi sur macOS : '+parts.join(' · ');
+        document.getElementById('macLine').innerHTML = 'Aussi sur macOS (bêta) : '+parts.join(' · ');
       }
     })
     .catch(function(){ /* silencieux : lien de secours déjà en place */ });
