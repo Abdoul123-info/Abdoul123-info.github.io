@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DoulGet — Gestionnaire de téléchargements pour Windows</title>
-<meta name="description" content="DoulGet télécharge vos vidéos, musiques et fichiers en multi-connexions sur Windows. Extension navigateur incluse. Licence par mobile money (Orange, MTN, Moov, Wave).">
+<meta name="description" content="DoulGet télécharge vos vidéos, musiques et fichiers depuis YouTube, TikTok, Facebook, Instagram et des centaines d'autres sites — en multi-connexions sur Windows. Extension navigateur incluse. Licence par mobile money (Orange, MTN, Moov, Wave).">
 <link rel="canonical" href="https://abdoul123-info.github.io/">
 <link rel="icon" href="icon.png">
 <meta property="og:title" content="DoulGet — Gestionnaire de téléchargements pour Windows">
-<meta property="og:description" content="Téléchargez vidéos, musiques et fichiers à pleine vitesse. Extension navigateur incluse.">
+<meta property="og:description" content="Téléchargez vidéos, musiques et fichiers depuis YouTube, TikTok, Facebook et des centaines d'autres sites, à pleine vitesse. Extension navigateur incluse.">
 <meta property="og:image" content="https://abdoul123-info.github.io/icon.png">
 <meta property="og:url" content="https://abdoul123-info.github.io/">
 <style>
@@ -37,6 +37,9 @@
   .hero h1 { font-size:clamp(30px,5.5vw,48px); line-height:1.15; letter-spacing:-.5px; }
   .hero h1 em { color:var(--blue); font-style:normal; }
   .hero p.sub { color:var(--mut); font-size:clamp(15px,2.4vw,18px); max-width:640px; margin:16px auto 0; line-height:1.65; }
+  .hero p.sub b { color:var(--txt); font-weight:600; }
+  .hero .platforms { color:var(--mut); font-size:12.5px; max-width:620px; margin:14px auto 0; line-height:1.8; }
+  .hero .platforms b { color:var(--blue); font-weight:600; }
   .dl-zone { margin-top:32px; display:flex; flex-direction:column; align-items:center; gap:10px; }
   .dl-btn { display:inline-flex; align-items:center; gap:12px; background:var(--blue2); color:#fff; font-size:18px; font-weight:700; padding:16px 34px; border-radius:14px; transition:.15s; box-shadow:0 8px 30px rgba(37,99,235,.35); }
   .dl-btn:hover { background:var(--blue); transform:translateY(-1px); }
@@ -127,7 +130,8 @@
 
 <header class="hero wrap" id="telecharger">
   <h1>Téléchargez tout,<br><em>à pleine vitesse.</em></h1>
-  <p class="sub">DoulGet est un gestionnaire de téléchargements pour Windows : vidéos, musiques et fichiers en multi-connexions, avec pause et reprise. Son extension navigateur détecte les médias à votre place.</p>
+  <p class="sub">DoulGet est un gestionnaire de téléchargements pour Windows : vidéos, musiques et fichiers depuis <b>YouTube, TikTok, Facebook, Instagram et des centaines d'autres sites</b> — en multi-connexions, avec pause et reprise. Son extension navigateur détecte les médias à votre place, sur tous les sites que vous visitez.</p>
+  <p class="platforms">Fonctionne avec : YouTube · TikTok · Facebook · Instagram · Twitter/X · Dailymotion · Vimeo · SoundCloud · sites de streaming… <b>et des centaines d'autres</b></p>
 
   <div class="dl-zone">
     <a class="dl-btn" id="dlBtn" href="https://github.com/Abdoul123-info/doulbrowser/releases/latest">
@@ -145,17 +149,17 @@
     </div>
     <div class="mock-body">
       <div class="dlrow">
-        <div class="t"><b>🎬 Documentaire-nature-4K.mp4</b><small>1,2 Go</small></div>
+        <div class="t"><b>🎬 Clip-YouTube-4K.mp4</b><small>1,2 Go</small></div>
         <div class="bar"><i style="width:72%"></i></div>
         <div class="st"><span>12,4 Mo/s · 8 connexions</span><span>72 %</span></div>
       </div>
       <div class="dlrow">
-        <div class="t"><b>🎵 Album-complet.zip</b><small>210 Mo</small></div>
+        <div class="t"><b>📺 Ma-Série — Épisode 12.mp4</b><small>410 Mo</small></div>
         <div class="bar"><i style="width:100%;background:var(--ok)"></i></div>
-        <div class="st"><span class="ok">✓ Terminé</span><span>100 %</span></div>
+        <div class="st"><span class="ok">✓ Terminé · épisode 13 en file</span><span>100 %</span></div>
       </div>
       <div class="dlrow">
-        <div class="t"><b>📄 Cours-informatique.pdf</b><small>48 Mo</small></div>
+        <div class="t"><b>🎵 Musique-TikTok.mp3</b><small>4,8 Mo</small></div>
         <div class="bar"><i style="width:31%"></i></div>
         <div class="st"><span>9,1 Mo/s · en cours…</span><span>31 %</span></div>
       </div>
@@ -171,8 +175,8 @@
     </div>
     <div class="grid">
       <div class="feat"><div class="ico">⚡</div><h3>Multi-connexions</h3><p>Chaque fichier est découpé et téléchargé en plusieurs connexions simultanées : votre bande passante est utilisée au maximum.</p></div>
-      <div class="feat"><div class="ico">🎬</div><h3>Vidéos &amp; musiques</h3><p>Collez le lien d'une vidéo ou d'une musique, choisissez la qualité (jusqu'à 4K) ou le format audio MP3, et c'est parti.</p></div>
-      <div class="feat"><div class="ico">🧩</div><h3>Extension navigateur</h3><p>L'extension détecte les vidéos et fichiers sur les pages que vous visitez et ajoute un bouton « Télécharger avec DoulGet ».</p></div>
+      <div class="feat"><div class="ico">🎬</div><h3>Vidéos &amp; musiques de partout</h3><p>Collez le lien d'une vidéo YouTube, TikTok, Facebook, Instagram… choisissez la qualité (jusqu'à 4K) ou le format audio MP3, et c'est parti. Des centaines de sites sont pris en charge.</p></div>
+      <div class="feat"><div class="ico">🧩</div><h3>Extension navigateur complète</h3><p>Sur <b>tous</b> les sites que vous visitez, l'extension détecte vidéos, musiques et fichiers et ajoute un bouton « Télécharger avec DoulGet ». Elle capture même les épisodes d'une série pour les télécharger en lot.</p></div>
       <div class="feat"><div class="ico">⏸️</div><h3>Pause &amp; reprise</h3><p>Coupure d'électricité ou de connexion ? Reprenez vos téléchargements exactement là où ils s'étaient arrêtés.</p></div>
       <div class="feat"><div class="ico">📱</div><h3>Paiement mobile money</h3><p>Activez votre licence en payant par Orange Money, MTN MoMo, Moov, Wave, MyNita ou Amana. La clé arrive instantanément.</p></div>
       <div class="feat"><div class="ico">🔄</div><h3>Mises à jour automatiques</h3><p>DoulGet vous prévient quand une nouvelle version est disponible et vérifie l'intégrité de chaque mise à jour (SHA-256).</p></div>
@@ -184,12 +188,12 @@
   <div class="wrap">
     <div class="sec-h">
       <h2>L'extension s'installe en 1 clic, depuis l'application</h2>
-      <p>Pas besoin de magasin d'extensions : DoulGet l'installe pour vous.</p>
+      <p>Pas besoin de magasin d'extensions : DoulGet installe pour vous la <b>version complète</b> — celle qui fonctionne sur tous les sites, sans les restrictions des stores.</p>
     </div>
     <div class="steps">
       <div class="step"><div class="num">1</div><h3>Téléchargez DoulGet</h3><p>Cliquez sur le bouton ci-dessus et installez l'application sur votre PC Windows.</p></div>
       <div class="step"><div class="num">2</div><h3>Ouvrez le menu « Extension »</h3><p>Dans l'application, cliquez sur « Installer l'extension ». DoulGet l'enregistre dans vos navigateurs (Chrome, Edge, Brave…).</p></div>
-      <div class="step"><div class="num">3</div><h3>Redémarrez le navigateur</h3><p>Un bouton « Télécharger avec DoulGet » apparaît sur les vidéos et fichiers des pages que vous visitez. C'est tout !</p></div>
+      <div class="step"><div class="num">3</div><h3>Redémarrez le navigateur</h3><p>Des boutons « 🎬 Vidéo » et « 🎵 Audio » apparaissent sur les lecteurs vidéo de tous les sites, et les épisodes des séries sont capturés pour un téléchargement en lot. C'est tout !</p></div>
     </div>
     <div class="ext-note"><b>🔒 Respect de votre vie privée :</b> l'extension n'envoie aucune donnée sur Internet. Tout ce qu'elle détecte est transmis uniquement à l'application DoulGet sur <b>votre</b> ordinateur.</div>
   </div>
@@ -224,6 +228,10 @@
       <details>
         <summary>Windows affiche « Windows a protégé votre ordinateur », c'est normal ?</summary>
         <p>Oui. DoulGet est un logiciel indépendant qui n'a pas (encore) de certificat de signature commercial — c'est cet avertissement SmartScreen que vous voyez, pas un virus. Cliquez sur « Informations complémentaires » puis « Exécuter quand même ». Chaque version publiée est accompagnée de son empreinte SHA-256 pour vérifier son intégrité.</p>
+      </details>
+      <details>
+        <summary>Quels sites sont pris en charge ?</summary>
+        <p>YouTube, TikTok, Facebook, Instagram, Twitter/X, Dailymotion, Vimeo, SoundCloud et des centaines d'autres sites de vidéos et de musiques. L'extension détecte aussi les vidéos des sites de streaming (avec capture des épisodes en lot pour les séries) et les fichiers classiques (PDF, ZIP, APK…) sur n'importe quelle page.</p>
       </details>
       <details>
         <summary>Sur quels navigateurs l'extension fonctionne-t-elle ?</summary>
