@@ -43,7 +43,6 @@
   .dl-btn svg { width:22px; height:22px; }
   .dl-meta { color:var(--mut); font-size:13px; }
   .dl-meta b { color:var(--txt); }
-  .mac-line { color:var(--mut); font-size:12.5px; }
   .smart { color:var(--mut); font-size:12px; max-width:520px; line-height:1.6; margin-top:6px; }
 
   /* MOCK WINDOW */
@@ -136,7 +135,6 @@
       Télécharger pour Windows
     </a>
     <div class="dl-meta" id="dlMeta">Version <b id="dlVer">2.4.1</b> · Windows 10/11 (64 bits) · Gratuit à l'essai</div>
-    <div class="mac-line" id="macLine"></div>
     <div class="smart">💡 Windows peut afficher un avertissement SmartScreen au premier lancement : cliquez sur « Informations complémentaires » puis « Exécuter quand même ».</div>
   </div>
 
@@ -235,10 +233,6 @@
         <summary>Ma licence fonctionne-t-elle sur plusieurs ordinateurs ?</summary>
         <p>Une licence est liée à un seul ordinateur. Si vous changez de machine, contactez-nous avec votre preuve d'achat et nous transférerons votre licence.</p>
       </details>
-      <details>
-        <summary>Et sur Mac ?</summary>
-        <p>Une version macOS <b>bêta</b> est disponible (Apple Silicon et Intel). Comme elle n'est pas encore signée par Apple, macOS peut afficher « DoulGet est endommagé » ou « développeur non vérifié » au premier lancement : allez dans Réglages Système → Confidentialité et sécurité → « Ouvrir quand même » (ou clic droit sur l'app → Ouvrir). L'installation en 1 clic de l'extension n'est pas encore disponible sur Mac. La version Windows reste la version de référence.</p>
-      </details>
     </div>
   </div>
 </section>
@@ -261,23 +255,14 @@
     .then(function(rel){
       var ver = (rel.tag_name || '').replace(/^v/,'');
       if (ver) document.getElementById('dlVer').textContent = ver;
-      var win=null, macArm=null, macX64=null;
+      var win=null;
       (rel.assets||[]).forEach(function(a){
-        var n=a.name.toLowerCase();
-        if (n.endsWith('-setup.exe')) win=a;
-        else if (n.endsWith('arm64.dmg')) macArm=a;
-        else if (n.endsWith('x64.dmg')) macX64=a;
+        if (a.name.toLowerCase().endsWith('-setup.exe')) win=a;
       });
       if (win){
         document.getElementById('dlBtn').href = win.browser_download_url;
         var size = Math.round(win.size/1048576);
         document.getElementById('dlMeta').innerHTML = 'Version <b>'+ver+'</b> · Windows 10/11 (64 bits) · '+size+' Mo';
-      }
-      if (macArm || macX64){
-        var parts=[];
-        if (macArm) parts.push('<a href="'+macArm.browser_download_url+'">Apple Silicon</a>');
-        if (macX64) parts.push('<a href="'+macX64.browser_download_url+'">Intel</a>');
-        document.getElementById('macLine').innerHTML = 'Aussi sur macOS (bêta) : '+parts.join(' · ');
       }
     })
     .catch(function(){ /* silencieux : lien de secours déjà en place */ });
