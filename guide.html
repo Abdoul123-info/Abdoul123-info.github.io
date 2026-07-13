@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide d'utilisation — DoulGet</title>
+<meta name="description" content="Apprenez à utiliser DoulGet : télécharger une vidéo, une playlist complète, installer l'extension navigateur, convertir en MP3 et compresser vos vidéos.">
+<link rel="canonical" href="https://abdoul123-info.github.io/guide.html">
+<link rel="icon" href="icon.png">
+<meta property="og:title" content="Guide d'utilisation — DoulGet">
+<meta property="og:description" content="Toutes les étapes en images : téléchargements, playlists, extension, MP3, compression.">
+<meta property="og:image" content="https://abdoul123-info.github.io/icon.png">
+<style>
+  :root { --bg:#070d1a; --card:#0d1628; --card2:#111d33; --line:#1d2f52; --blue:#3b82f6; --blue2:#2563eb; --txt:#e8eefc; --mut:#8ea3c8; --ok:#34d399; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--txt); font-family:'Segoe UI',system-ui,sans-serif; min-height:100vh; }
+  a { color:var(--blue); text-decoration:none; }
+  .wrap { max-width:860px; margin:0 auto; padding:0 20px; }
+
+  nav { position:sticky; top:0; z-index:50; background:rgba(7,13,26,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .nav-in { display:flex; align-items:center; justify-content:space-between; height:60px; }
+  .brand { display:flex; align-items:center; gap:10px; color:var(--txt); font-weight:700; font-size:19px; }
+  .brand img { width:34px; height:34px; border-radius:9px; }
+  .brand span { color:var(--blue); }
+  .nav-links { display:flex; gap:22px; align-items:center; }
+  .nav-links a { color:var(--mut); font-size:14px; transition:.15s; }
+  .nav-links a:hover { color:var(--txt); }
+  .nav-links a.cta { background:var(--blue2); color:#fff; padding:8px 16px; border-radius:9px; font-weight:600; }
+  .nav-links a.cta:hover { background:var(--blue); }
+  @media (max-width:640px){ .nav-links a:not(.cta){ display:none; } }
+
+  header.hero { text-align:center; padding:52px 0 10px; }
+  header.hero h1 { font-size:clamp(26px,4.6vw,38px); }
+  header.hero h1 em { color:var(--blue); font-style:normal; }
+  header.hero p { color:var(--mut); font-size:15.5px; max-width:600px; margin:14px auto 0; line-height:1.65; }
+
+  .toc { display:flex; flex-wrap:wrap; gap:9px; justify-content:center; margin:26px auto 6px; max-width:720px; }
+  .toc a { background:var(--card); border:1px solid var(--line); border-radius:99px; color:var(--mut); font-size:13px; padding:8px 15px; transition:.15s; }
+  .toc a:hover { border-color:var(--blue); color:var(--txt); }
+
+  section { padding:46px 0 4px; }
+  section > .wrap > h2 { font-size:clamp(20px,3.2vw,26px); display:flex; align-items:center; gap:12px; }
+  .stepnum { flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:var(--blue2); color:#fff; font-size:16px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  section > .wrap > p.lead { color:var(--mut); font-size:14.5px; line-height:1.7; margin-top:10px; }
+
+  figure { background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-top:18px; }
+  figure img { display:block; width:100%; height:auto; }
+  figcaption { padding:12px 16px; color:var(--mut); font-size:13.5px; line-height:1.6; border-top:1px solid var(--line); }
+  figcaption b { color:var(--txt); }
+
+  .tip { background:rgba(52,211,153,.07); border:1px solid rgba(52,211,153,.28); border-radius:12px; padding:13px 16px; color:var(--mut); font-size:13.5px; line-height:1.7; margin-top:16px; }
+  .tip b { color:var(--ok); }
+  .warn { background:rgba(251,191,36,.06); border:1px solid rgba(251,191,36,.3); border-radius:12px; padding:13px 16px; color:var(--mut); font-size:13.5px; line-height:1.7; margin-top:16px; }
+  .warn b { color:#fbbf24; }
+
+  ol.steps { margin:14px 0 0 0; padding-left:22px; color:var(--mut); font-size:14px; line-height:2; }
+  ol.steps b { color:var(--txt); }
+
+  .cta-final { text-align:center; padding:56px 0 10px; }
+  .cta-final a.big { display:inline-block; background:var(--blue2); color:#fff; font-size:16px; font-weight:700; padding:14px 34px; border-radius:12px; transition:.15s; }
+  .cta-final a.big:hover { background:var(--blue); }
+  .cta-final p { color:var(--mut); font-size:13px; margin-top:12px; }
+
+  footer { border-top:1px solid var(--line); margin-top:60px; padding:30px 0 40px; text-align:center; color:var(--mut); font-size:13px; line-height:2.1; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="/"><img src="icon.png" alt="DoulGet">Doul<span>Get</span></a>
+    <div class="nav-links">
+      <a href="/">Accueil</a>
+      <a href="/doulget-store/">Licence</a>
+      <a class="cta" href="/#telecharger">Télécharger</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <h1>Guide d'utilisation de <em>DoulGet</em></h1>
+  <p>Toutes les étapes en images, du premier téléchargement jusqu'aux outils avancés. Chaque capture vient de la vraie application.</p>
+  <div class="toc">
+    <a href="#demarrer">1 · Démarrer</a>
+    <a href="#playlist">2 · Playlists &amp; lots</a>
+    <a href="#extension">3 · Extension</a>
+    <a href="#mp3">4 · Convertisseur MP3</a>
+    <a href="#compresseur">5 · Compresseur vidéo</a>
+    <a href="#organisation">6 · Organisation</a>
+    <a href="#corbeille">7 · Corbeille</a>
+    <a href="#parametres">8 · Paramètres</a>
+  </div>
+</header>
+
+<section id="demarrer">
+  <div class="wrap">
+    <h2><span class="stepnum">1</span>Démarrer : télécharger votre première vidéo</h2>
+    <p class="lead">Après l'installation, ouvrez DoulGet. Copiez le lien d'une vidéo (ou d'un fichier), cliquez sur <b style="color:var(--txt)">« Ajouter une URL »</b> en haut à droite, collez le lien — le téléchargement démarre en multi-connexions, avec pause et reprise.</p>
+    <figure>
+      <img src="guide/app-accueil.png" alt="Interface principale de DoulGet avec un téléchargement en cours" loading="lazy">
+      <figcaption><b>L'écran principal.</b> À gauche, la navigation (En cours, Terminés, En attente, Corbeille) et les outils (Téléchargement Groupé, Convertisseur MP3, Compresseur Vidéo). Le bouton bleu « Ajouter une URL » lance un téléchargement à partir d'un lien collé.</figcaption>
+    </figure>
+    <div class="tip"><b>💡 Astuce :</b> vous pouvez suivre la vitesse, la progression et le temps restant en direct, et mettre en pause ou reprendre chaque téléchargement individuellement.</div>
+  </div>
+</section>
+
+<section id="playlist">
+  <div class="wrap">
+    <h2><span class="stepnum">2</span>Télécharger une playlist ou plusieurs vidéos d'un coup</h2>
+    <p class="lead">Le <b style="color:var(--txt)">Téléchargement Groupé</b> analyse un lien de playlist et vous laisse choisir précisément quelles vidéos télécharger — en vidéo ou en audio.</p>
+    <figure>
+      <img src="guide/copier-lien.jpg" alt="Copier le lien d'une playlist dans le navigateur" loading="lazy">
+      <figcaption><b>Étape A.</b> Dans votre navigateur, copiez le lien de la playlist (ou d'une vidéo qui appartient à une playlist).</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/groupe-coller-lien.png" alt="Coller le lien dans le Téléchargement Groupé" loading="lazy">
+      <figcaption><b>Étape B.</b> Dans DoulGet, ouvrez <b>Téléchargement Groupé</b>, collez le lien puis cliquez « Analyser la liste ».</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/groupe-playlist.png" alt="Liste des vidéos de la playlist avec cases à cocher" loading="lazy">
+      <figcaption><b>Étape C.</b> Toutes les vidéos de la playlist s'affichent. Cochez celles que vous voulez, choisissez <b>Vidéo</b> ou <b>Audio</b>, puis « Lancer le téléchargement ».</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/groupe-en-cours.png" alt="Téléchargements groupés en cours" loading="lazy">
+      <figcaption><b>Étape D.</b> Les téléchargements s'enchaînent automatiquement dans la file — vous pouvez continuer à utiliser votre PC.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="extension">
+  <div class="wrap">
+    <h2><span class="stepnum">3</span>Installer l'extension navigateur</h2>
+    <p class="lead">L'extension ajoute des boutons de téléchargement directement sur les pages que vous visitez. Elle s'installe depuis l'application, en quelques clics.</p>
+    <figure>
+      <img src="guide/ext-installer.png" alt="Fenêtre À propos avec le bouton INSTALLER L'EXTENSION" loading="lazy">
+      <figcaption><b>Étape A.</b> Dans DoulGet, ouvrez <b>À propos</b> puis cliquez sur <b>« INSTALLER L'EXTENSION »</b>.</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/ext-etapes.png" alt="Extension préparée avec les étapes à suivre dans Chrome" loading="lazy">
+      <figcaption><b>Étape B.</b> DoulGet prépare les fichiers (« Extension préparée ! ») et affiche les étapes. Votre navigateur s'ouvre sur la page des extensions ; le chemin du dossier à sélectionner est affiché (et copié dans un fichier texte sur votre Bureau).</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/ext-chrome.png" alt="Page chrome extensions avec le mode développeur activé" loading="lazy">
+      <figcaption><b>Étape C.</b> Dans Chrome : activez le <b>Mode développeur</b> (en haut à droite), cliquez <b>« Charger l'extension non empaquetée »</b> et sélectionnez le dossier indiqué. DoulGet apparaît dans la liste des extensions.</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/ext-boutons-youtube.jpg" alt="Boutons Vidéo et Audio de DoulGet affichés sur un lecteur vidéo" loading="lazy">
+      <figcaption><b>Résultat.</b> Sur les lecteurs vidéo des sites que vous visitez, les boutons <b>🎬 Vidéo</b> et <b>🎵 Audio</b> apparaissent : un clic et le téléchargement part dans DoulGet.</figcaption>
+    </figure>
+    <div class="warn"><b>⚠️ Important :</b> redémarrez votre navigateur après l'installation. Si les boutons n'apparaissent pas, vérifiez que l'application DoulGet est bien lancée (l'extension communique avec elle).</div>
+  </div>
+</section>
+
+<section id="mp3">
+  <div class="wrap">
+    <h2><span class="stepnum">4</span>Convertir une vidéo en MP3</h2>
+    <p class="lead">Le <b style="color:var(--txt)">Convertisseur MP3</b> transforme n'importe quelle vidéo déjà sur votre PC en fichier audio.</p>
+    <figure>
+      <img src="guide/mp3-selection.png" alt="Sélection de la vidéo à convertir" loading="lazy">
+      <figcaption><b>Étape A.</b> Ouvrez <b>Convertisseur MP3</b> et choisissez la vidéo à convertir sur votre ordinateur.</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/mp3-termine.png" alt="Conversion MP3 terminée" loading="lazy">
+      <figcaption><b>Étape B.</b> La conversion se lance et le MP3 est prêt en quelques instants — rangé automatiquement dans votre dossier Audios.</figcaption>
+    </figure>
+    <div class="tip"><b>💡 Encore plus simple :</b> pour obtenir directement l'audio d'une vidéo en ligne, choisissez « Audio » au moment du téléchargement — pas besoin de convertir après.</div>
+  </div>
+</section>
+
+<section id="compresseur">
+  <div class="wrap">
+    <h2><span class="stepnum">5</span>Compresser une vidéo (pour WhatsApp, e-mail…)</h2>
+    <p class="lead">Le <b style="color:var(--txt)">Compresseur Vidéo</b> réduit le poids d'une vidéo pour la partager facilement, même avec une connexion limitée.</p>
+    <figure>
+      <img src="guide/compresseur.png" alt="Fenêtre du compresseur vidéo" loading="lazy">
+      <figcaption><b>Étape A.</b> Ouvrez <b>Compresseur Vidéo</b> et choisissez une vidéo (MP4, MKV, AVI, MOV…).</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/compresseur-taille.png" alt="Choix de la taille de compression" loading="lazy">
+      <figcaption><b>Étape B.</b> Choisissez la taille cible — DoulGet ajuste la qualité automatiquement.</figcaption>
+    </figure>
+    <figure>
+      <img src="guide/compresseur-cours.png" alt="Compression en cours" loading="lazy">
+      <figcaption><b>Étape C.</b> La compression tourne en arrière-plan ; la vidéo allégée est prête à partager.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="organisation">
+  <div class="wrap">
+    <h2><span class="stepnum">6</span>Une organisation automatique et propre</h2>
+    <p class="lead">DoulGet range tout à votre place : les vidéos dans <b style="color:var(--txt)">Videos</b>, les musiques dans <b style="color:var(--txt)">Audios</b>, les épisodes d'une même série regroupés par saison dans leur propre dossier.</p>
+    <figure>
+      <img src="guide/organisation.jpg" alt="Dossier de téléchargements organisé automatiquement" loading="lazy">
+      <figcaption><b>Votre dossier reste propre</b> même après des dizaines de téléchargements — chaque fichier est nommé clairement et rangé au bon endroit.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="corbeille">
+  <div class="wrap">
+    <h2><span class="stepnum">7</span>La corbeille : supprimer sans regret</h2>
+    <p class="lead">Un téléchargement supprimé passe d'abord par la corbeille de DoulGet — vous pouvez le restaurer ou le supprimer définitivement.</p>
+    <figure>
+      <img src="guide/corbeille.png" alt="Corbeille de DoulGet" loading="lazy">
+      <figcaption>La <b>Corbeille</b> garde vos suppressions récentes : restaurez en un clic, ou videz-la pour libérer l'espace.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="parametres">
+  <div class="wrap">
+    <h2><span class="stepnum">8</span>Les paramètres utiles</h2>
+    <p class="lead">Dossier de téléchargement, nombre de connexions simultanées, notifications, langue… tout se règle dans <b style="color:var(--txt)">Paramètres</b>.</p>
+    <figure>
+      <img src="guide/parametres.png" alt="Écran des paramètres de DoulGet" loading="lazy">
+      <figcaption>Les <b>Paramètres</b> : personnalisez le comportement de DoulGet selon votre connexion et vos habitudes.</figcaption>
+    </figure>
+    <div class="tip"><b>💡 Licence :</b> pour activer DoulGet sans limite, achetez une clé sur la <a href="/doulget-store/">boutique officielle</a> (mobile money) — l'application s'active automatiquement après le paiement.</div>
+  </div>
+</section>
+
+<div class="cta-final">
+  <a class="big" href="/#telecharger">Télécharger DoulGet pour Windows</a>
+  <p>Gratuit à l'essai · Licence dès 1 500 FCFA par mobile money</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <img src="icon.png" alt="" width="40" height="40" style="border-radius:11px"><br>
+    <b style="color:var(--txt)">DoulGet</b> — Gestionnaire de téléchargements<br>
+    <a href="/">Accueil</a> · <a href="/doulget-store/">Boutique</a> · <a href="/doulget-store/privacy.html">Politique de confidentialité</a> · <a href="mailto:oumarouabdoul485@gmail.com">Contact</a><br>
+    <span style="font-size:11.5px">© 2026 DoulGet. Téléchargez uniquement des contenus que vous avez le droit de télécharger.</span>
+  </div>
+</footer>
+
+</body>
+</html>
