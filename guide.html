@@ -57,6 +57,12 @@
   ol.steps { margin:14px 0 0 0; padding-left:22px; color:var(--mut); font-size:14px; line-height:2; }
   ol.steps b { color:var(--txt); }
 
+  /* Captures téléphone (portrait) : deux par rangée, taille raisonnable */
+  .phones { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px; margin-top:18px; }
+  .phones figure { margin-top:0; }
+  .phones figure img { max-width:320px; margin:0 auto; }
+  @media (max-width:560px){ .phones { grid-template-columns:1fr; } }
+
   .cta-final { text-align:center; padding:56px 0 10px; }
   .cta-final a.big { display:inline-block; background:var(--blue2); color:#fff; font-size:16px; font-weight:700; padding:14px 34px; border-radius:12px; transition:.15s; }
   .cta-final a.big:hover { background:var(--blue); }
@@ -90,6 +96,7 @@
     <a href="#organisation">6 · Organisation</a>
     <a href="#corbeille">7 · Corbeille</a>
     <a href="#parametres">8 · Paramètres</a>
+    <a href="#mobile-guide">9 · 📱 DoulGet Mobile</a>
   </div>
 </header>
 
@@ -221,8 +228,60 @@
   </div>
 </section>
 
+<section id="mobile-guide">
+  <div class="wrap">
+    <h2><span class="stepnum">9</span>📱 DoulGet Mobile : le guide Android</h2>
+    <p class="lead">La même puissance sur votre téléphone. Installez <a href="/#mobile"><b>l'APK Android</b></a>, ouvrez l'application — voici tout ce qu'il faut savoir, en images.</p>
+
+    <div class="phones">
+      <figure>
+        <img src="guide/mobile-accueil.jpg" alt="Écran principal de DoulGet Mobile avec un lien collé" loading="lazy">
+        <figcaption><b>1 · Collez le lien.</b> Copiez le lien d'une vidéo puis collez-le (bouton presse-papiers), ou plus simple : dans YouTube ou TikTok, appuyez sur <b>Partager → DoulGet</b>. Choisissez <b>Vidéo</b> ou <b>Audio (MP3)</b>, la qualité, et appuyez sur <b>Télécharger</b>.</figcaption>
+      </figure>
+      <figure>
+        <img src="guide/mobile-encours.jpg" alt="Téléchargement en cours avec barre de progression, vitesse, boutons Pause et Annuler" loading="lazy">
+        <figcaption><b>2 · Suivez la progression.</b> Barre de progression, pourcentage et vitesse en direct. Les boutons <b>⏸ Pause</b> et <b>✕ Annuler</b> sont sous chaque téléchargement — la reprise repart exactement où vous vous étiez arrêté.</figcaption>
+      </figure>
+    </div>
+
+    <figure>
+      <img src="guide/mobile-notification.jpg" alt="Notification Android montrant la progression du téléchargement DoulGet" loading="lazy">
+      <figcaption><b>3 · Quittez l'appli sans souci.</b> Les téléchargements continuent en arrière-plan, écran éteint compris. La notification montre la progression en direct, avec un bouton Annuler. Vous êtes aussi prévenu quand tout est terminé — et quand une mise à jour de l'application est disponible.</figcaption>
+    </figure>
+
+    <div class="phones">
+      <figure>
+        <img src="guide/mobile-termine.jpg" alt="Téléchargement terminé, bouton lecture pour ouvrir le fichier" loading="lazy">
+        <figcaption><b>4 · Ouvrez d'un geste.</b> Une fois terminé, appuyez sur <b>▶</b> pour lire le fichier. Tout est rangé proprement : vidéos, musiques et playlists chacune dans leur dossier.</figcaption>
+      </figure>
+      <figure>
+        <img src="guide/mobile-menu.jpg" alt="Menu de DoulGet Mobile : licence, historique, corbeille, emplacement, langue" loading="lazy">
+        <figcaption><b>5 · Le menu ⋮ .</b> Historique, corbeille, dossier de rangement, nombre de téléchargements simultanés, langue <b>français / anglais</b>, avis et licence — tout est là.</figcaption>
+      </figure>
+    </div>
+
+    <div class="phones">
+      <figure>
+        <img src="guide/mobile-licence.jpg" alt="Dialogue de licence DoulGet Mobile avec champ de clé et bouton Acheter par WhatsApp" loading="lazy">
+        <figcaption><b>6 · Activez votre licence.</b> 3 jours d'essai complet offerts. Ensuite, menu ⋮ → <b>🔑 Licence</b> : collez votre clé et appuyez sur <b>Activer</b>. Pas encore de clé ? <b>Acheter par WhatsApp</b> pré-remplit le message avec l'identifiant de votre téléphone.</figcaption>
+      </figure>
+      <figure style="display:flex;flex-direction:column;justify-content:center">
+        <figcaption style="border-top:none">
+          <b>Bon à savoir :</b><br><br>
+          📃 <b>Playlists</b> : collez le lien d'une playlist puis « Playlist / plusieurs vidéos » — cochez ce que vous voulez, chaque playlist a son dossier.<br><br>
+          🔑 Les <b>mêmes clés</b> fonctionnent sur DoulGet Windows et DoulGet Mobile (1 clé = 1 appareil).<br><br>
+          🔄 L'application vous <b>prévient automatiquement</b> quand une nouvelle version est disponible — un appui suffit pour l'installer.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="tip"><b>💡 Le réflexe le plus rapide :</b> depuis n'importe quelle appli (YouTube, TikTok, navigateur…), appuyez sur <b>Partager</b> puis choisissez <b>DoulGet</b> — le lien est collé automatiquement, il ne reste qu'à appuyer sur Télécharger.</div>
+  </div>
+</section>
+
 <div class="cta-final">
   <a class="big" href="/#telecharger">Télécharger DoulGet pour Windows</a>
+  <p style="margin-top:14px"><a href="/#mobile" style="font-weight:700">📱 Télécharger DoulGet Mobile pour Android</a></p>
   <p>Gratuit à l'essai · Licence dès 1 500 FCFA par mobile money</p>
 </div>
 
