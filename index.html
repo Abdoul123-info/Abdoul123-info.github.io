@@ -48,6 +48,22 @@
   .dl-meta b { color:var(--txt); }
   .smart { color:var(--mut); font-size:12px; max-width:520px; line-height:1.6; margin-top:6px; }
 
+  /* CHOIX DE PLATEFORME — Android d'abord : la majorité des visiteurs arrivent
+     depuis un téléphone et repartaient avec le .exe Windows par erreur. */
+  .picks { margin-top:30px; display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
+  .pick { flex:1 1 280px; max-width:340px; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px 20px; text-align:center; transition:.15s; }
+  .pick:hover { transform:translateY(-2px); border-color:var(--blue2); }
+  .pick .pk-ico { font-size:34px; line-height:1; }
+  .pick h3 { margin:10px 0 4px; font-size:19px; }
+  .pick .pk-sub { color:var(--mut); font-size:13px; min-height:34px; }
+  .pick .dl-btn { width:100%; justify-content:center; margin-top:14px; font-size:16px; padding:14px 18px; }
+  .pick.secondary .dl-btn { background:transparent; color:var(--txt); border:1px solid var(--line); box-shadow:none; }
+  .pick.secondary .dl-btn:hover { border-color:var(--blue2); background:rgba(37,99,235,.08); }
+  /* Appareil détecté : on met en avant la bonne plateforme */
+  .pick.is-you { border-color:var(--blue2); box-shadow:0 10px 34px rgba(37,99,235,.22); }
+  .youtag { display:none; margin-top:10px; font-size:12px; font-weight:700; color:var(--blue); }
+  .pick.is-you .youtag { display:block; }
+
   /* MOCK WINDOW */
   .mock { max-width:720px; margin:44px auto 0; background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.45); text-align:left; }
   .mock-bar { display:flex; align-items:center; gap:8px; background:var(--card2); padding:10px 14px; border-bottom:1px solid var(--line); }
@@ -119,9 +135,9 @@
   <div class="wrap nav-in">
     <a class="brand" href="/"><img src="icon.png" alt="DoulGet">Doul<span>Get</span></a>
     <div class="nav-links">
-      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#mobile">Android</a>
+      <a href="#fonctionnalites">Windows</a>
       <a href="#extension">Extension</a>
-      <a href="#mobile">📱 Mobile</a>
       <a href="#licence">Licence</a>
       <a href="guide.html">Guide</a>
       <a href="#faq">FAQ</a>
@@ -132,18 +148,41 @@
 
 <header class="hero wrap" id="telecharger">
   <h1>Téléchargez tout,<br><em>à pleine vitesse.</em></h1>
-  <p class="sub">DoulGet est un gestionnaire de téléchargements pour Windows : vidéos, musiques et fichiers depuis <b>YouTube, TikTok, Facebook, Instagram et des centaines d'autres sites</b> — en multi-connexions, avec pause et reprise. Son extension navigateur détecte les médias à votre place, sur tous les sites que vous visitez.</p>
+  <p class="sub">Vidéos, musiques et fichiers depuis <b>YouTube, TikTok, Facebook, Instagram et des centaines d'autres sites</b> — en multi-connexions, avec pause et reprise. <b>Sur votre téléphone Android</b> comme <b>sur votre PC Windows</b>.</p>
   <p class="platforms">Fonctionne avec : YouTube · TikTok · Facebook · Instagram · Twitter/X · Dailymotion · Vimeo · SoundCloud · sites de streaming… <b>et des centaines d'autres</b></p>
 
-  <div class="dl-zone">
-    <a class="dl-btn" id="dlBtn" href="https://github.com/Abdoul123-info/doulbrowser/releases/latest">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Télécharger pour Windows
-    </a>
-    <div class="dl-meta" id="dlMeta">Version <b id="dlVer">2.4.3</b> · Windows 10/11 (64 bits) · Gratuit à l'essai</div>
-    <div class="smart">💡 Windows peut afficher un avertissement SmartScreen au premier lancement : cliquez sur « Informations complémentaires » puis « Exécuter quand même ».</div>
+  <!-- Choisissez votre appareil — Android en premier (la plupart des visiteurs
+       sont sur téléphone et téléchargeaient le .exe Windows par erreur). -->
+  <div class="picks">
+    <div class="pick" id="pickAndroid">
+      <div class="pk-ico">📱</div>
+      <h3>Pour téléphone Android</h3>
+      <div class="pk-sub">L'application mobile : téléchargez directement depuis votre téléphone, sans PC.</div>
+      <a class="dl-btn js-apk-link" href="https://github.com/Abdoul123-info/doulbrowser/releases">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Télécharger pour Android
+      </a>
+      <div class="dl-meta">Version <b class="js-apk-ver">…</b> · Android 7 et plus</div>
+      <div class="youtag">✓ Vous êtes sur Android</div>
+    </div>
+
+    <div class="pick secondary" id="pickWindows">
+      <div class="pk-ico">🖥️</div>
+      <h3>Pour ordinateur Windows</h3>
+      <div class="pk-sub">Le logiciel PC + son extension navigateur qui détecte les vidéos à votre place.</div>
+      <a class="dl-btn js-win-link" href="https://github.com/Abdoul123-info/doulbrowser/releases/latest">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Télécharger pour Windows
+      </a>
+      <div class="dl-meta">Version <b class="js-win-ver">…</b> · Windows 10/11 (64 bits)</div>
+      <div class="youtag">✓ Vous êtes sur Windows</div>
+    </div>
+  </div>
+
+  <div class="dl-zone" style="margin-top:22px">
+    <div class="smart">🎁 <b>3 jours d'essai complet</b> sur les deux versions, puis à partir de 1 500 F.</div>
     <div class="smart">📖 Première fois ? Suivez le <a href="guide.html"><b>guide d'utilisation en images</b></a>.</div>
-    <div class="smart">📱 Sur téléphone ? <a href="#mobile"><b>DoulGet Mobile pour Android</b></a> est aussi disponible.</div>
+    <div class="smart">💡 Android : autorisez « Installer des applications inconnues ». Windows : si SmartScreen s'affiche, cliquez sur « Informations complémentaires » puis « Exécuter quand même ».</div>
   </div>
 
   <div class="mock" aria-hidden="true">
@@ -170,6 +209,32 @@
     </div>
   </div>
 </header>
+
+<section id="mobile">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>📱 DoulGet Mobile — la même puissance, sur Android</h2>
+      <p>Téléchargez vidéos et musiques directement depuis votre téléphone, sans PC.</p>
+    </div>
+    <div class="grid">
+      <div class="feat"><div class="ico">🎬</div><h3>Vidéos &amp; MP3 de partout</h3><p>Collez un lien YouTube, TikTok, Facebook, Instagram… choisissez la qualité (jusqu'à 1080p HD) ou le MP3, et téléchargez. Les mêmes centaines de sites que sur PC.</p></div>
+      <div class="feat"><div class="ico">⚡</div><h3>Téléchargement accéléré</h3><p>Chaque fichier est téléchargé en 16 connexions simultanées : plusieurs mégaoctets par seconde là où les autres applis plafonnent.</p></div>
+      <div class="feat"><div class="ico">📃</div><h3>Playlists entières</h3><p>Collez le lien d'une playlist, cochez les vidéos voulues : tout est téléchargé et rangé automatiquement dans un dossier au nom de la playlist.</p></div>
+      <div class="feat"><div class="ico">🕘</div><h3>Historique &amp; corbeille</h3><p>Retrouvez tous vos téléchargements, ouvrez-les d'un geste, envoyez-les à la corbeille ou restaurez-les. Vous choisissez le dossier de rangement.</p></div>
+      <div class="feat"><div class="ico">🌐</div><h3>Français / English</h3><p>L'application parle votre langue : basculez entre français et anglais dans le menu, instantanément.</p></div>
+      <div class="feat"><div class="ico">🔑</div><h3>Une licence, activation simple</h3><p>3 jours d'essai complet, puis mode gratuit. La licence (mêmes tarifs que sur PC) s'achète en un message WhatsApp depuis l'app et se met à jour automatiquement.</p></div>
+    </div>
+    <div class="dl-zone" style="margin-top:30px">
+      <a class="dl-btn js-apk-link" href="https://github.com/Abdoul123-info/doulbrowser/releases">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Télécharger l'APK Android
+      </a>
+      <div class="dl-meta">Version <b class="js-apk-ver">…</b> · Android 7 et plus · Gratuit à l'essai</div>
+      <div class="smart">💡 L'APK s'installe hors Play Store : autorisez « Installer des applications inconnues » quand Android le demande. L'intégrité de chaque version est vérifiable par empreinte SHA-256.</div>
+      <div class="smart">📖 Première fois sur mobile ? Suivez le <a href="guide.html#mobile-guide"><b>guide d'utilisation en images</b></a>.</div>
+    </div>
+  </div>
+</section>
 
 <section id="fonctionnalites">
   <div class="wrap">
@@ -203,31 +268,6 @@
   </div>
 </section>
 
-<section id="mobile">
-  <div class="wrap">
-    <div class="sec-h">
-      <h2>📱 DoulGet Mobile — la même puissance, sur Android</h2>
-      <p>Téléchargez vidéos et musiques directement depuis votre téléphone, sans PC.</p>
-    </div>
-    <div class="grid">
-      <div class="feat"><div class="ico">🎬</div><h3>Vidéos &amp; MP3 de partout</h3><p>Collez un lien YouTube, TikTok, Facebook, Instagram… choisissez la qualité (jusqu'à 1080p HD) ou le MP3, et téléchargez. Les mêmes centaines de sites que sur PC.</p></div>
-      <div class="feat"><div class="ico">⚡</div><h3>Téléchargement accéléré</h3><p>Chaque fichier est téléchargé en 16 connexions simultanées : plusieurs mégaoctets par seconde là où les autres applis plafonnent.</p></div>
-      <div class="feat"><div class="ico">📃</div><h3>Playlists entières</h3><p>Collez le lien d'une playlist, cochez les vidéos voulues : tout est téléchargé et rangé automatiquement dans un dossier au nom de la playlist.</p></div>
-      <div class="feat"><div class="ico">🕘</div><h3>Historique &amp; corbeille</h3><p>Retrouvez tous vos téléchargements, ouvrez-les d'un geste, envoyez-les à la corbeille ou restaurez-les. Vous choisissez le dossier de rangement.</p></div>
-      <div class="feat"><div class="ico">🌐</div><h3>Français / English</h3><p>L'application parle votre langue : basculez entre français et anglais dans le menu, instantanément.</p></div>
-      <div class="feat"><div class="ico">🔑</div><h3>Une licence, activation simple</h3><p>3 jours d'essai complet, puis mode gratuit. La licence (mêmes tarifs que sur PC) s'achète en un message WhatsApp depuis l'app et se met à jour automatiquement.</p></div>
-    </div>
-    <div class="dl-zone" style="margin-top:30px">
-      <a class="dl-btn" id="dlBtnApk" href="https://github.com/Abdoul123-info/doulbrowser/releases/download/android-v2.8/DoulGet-mobile-v2.8.apk">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Télécharger l'APK Android
-      </a>
-      <div class="dl-meta" id="dlMetaApk">Version <b id="dlVerApk">2.8</b> · Android 7 et plus · Gratuit à l'essai</div>
-      <div class="smart">💡 L'APK s'installe hors Play Store : autorisez « Installer des applications inconnues » quand Android le demande. L'intégrité de chaque version est vérifiable par empreinte SHA-256.</div>
-      <div class="smart">📖 Première fois sur mobile ? Suivez le <a href="guide.html#mobile-guide"><b>guide d'utilisation en images</b></a>.</div>
-    </div>
-  </div>
-</section>
 
 <section id="licence">
   <div class="wrap">
@@ -298,19 +338,22 @@
   // Récupère la dernière version publiée sur GitHub Releases et met à jour
   // le bouton (lien direct .exe). En cas d'échec, le bouton garde son lien
   // vers la page "latest" de GitHub.
+  // Les boutons sont ciblés par CLASSE (et non par id) : la même plateforme
+  // apparaît à plusieurs endroits (choix en haut de page + section dédiée),
+  // et un id ne peut être présent qu'une fois.
+  function setAll(sel, fn){ Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+
   fetch('https://api.github.com/repos/Abdoul123-info/doulbrowser/releases/latest')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(rel){
       var ver = (rel.tag_name || '').replace(/^v/,'');
-      if (ver) document.getElementById('dlVer').textContent = ver;
+      if (ver) setAll('.js-win-ver', function(e){ e.textContent = ver; });
       var win=null;
       (rel.assets||[]).forEach(function(a){
         if (a.name.toLowerCase().endsWith('-setup.exe')) win=a;
       });
       if (win){
-        document.getElementById('dlBtn').href = win.browser_download_url;
-        var size = Math.round(win.size/1048576);
-        document.getElementById('dlMeta').innerHTML = 'Version <b>'+ver+'</b> · Windows 10/11 (64 bits) · '+size+' Mo';
+        setAll('.js-win-link', function(e){ e.href = win.browser_download_url; });
       }
     })
     .catch(function(){ /* silencieux : lien de secours déjà en place */ });
@@ -330,14 +373,28 @@
         if (a.name.toLowerCase().endsWith('.apk')) apk = a;
       });
       var ver = rel.tag_name.replace('android-v','');
-      document.getElementById('dlVerApk').textContent = ver;
+      setAll('.js-apk-ver', function(e){ e.textContent = ver; });
       if (apk){
-        document.getElementById('dlBtnApk').href = apk.browser_download_url;
-        var size = Math.round(apk.size/1048576);
-        document.getElementById('dlMetaApk').innerHTML = 'Version <b>'+ver+'</b> · Android 7 et plus · '+size+' Mo';
+        setAll('.js-apk-link', function(e){ e.href = apk.browser_download_url; });
       }
     })
     .catch(function(){ /* silencieux : lien de secours déjà en place */ });
+
+  // Met en avant la plateforme de l'appareil du visiteur : la cause des
+  // téléchargements « par erreur » était qu'un visiteur sur téléphone
+  // repartait avec le programme d'installation Windows.
+  (function(){
+    var ua = navigator.userAgent || '';
+    var estAndroid = /Android/i.test(ua);
+    var estWindows = /Windows NT/i.test(ua);
+    if (estAndroid) {
+      var a = document.getElementById('pickAndroid');
+      if (a) a.classList.add('is-you');
+    } else if (estWindows) {
+      var w = document.getElementById('pickWindows');
+      if (w) { w.classList.add('is-you'); w.classList.remove('secondary'); }
+    }
+  })();
 </script>
 
 </body>
