@@ -64,6 +64,21 @@
   .youtag { display:none; margin-top:10px; font-size:12px; font-weight:700; color:var(--blue); }
   .pick.is-you .youtag { display:block; }
 
+  /* Windows trop ancien (7 / 8 / 8.1) : DoulGet PC est bati sur Electron 33,
+     qui exige Windows 10 minimum — le .exe refuse de demarrer (« n'est pas une
+     application Win32 valide »). On previent AVANT le telechargement de 195 Mo. */
+  .pick.too-old { border-color:#b45309; box-shadow:0 10px 34px rgba(180,83,9,.18); }
+  .pick.too-old .dl-btn { opacity:.45; pointer-events:none; filter:grayscale(1); }
+  .pick.too-old .youtag { display:none; }
+  .oldwin { display:none; margin-top:14px; text-align:left; background:rgba(180,83,9,.12);
+            border:1px solid #b45309; border-radius:12px; padding:12px 14px; font-size:13px; line-height:1.5; }
+  .pick.too-old .oldwin { display:block; }
+  .oldwin b { color:#fbbf24; }
+  .oldwin .ow-alt { display:inline-block; margin-top:10px; font-weight:700; color:var(--blue); }
+  /* Carte mise en avant comme SOLUTION DE REMPLACEMENT (visiteur sur PC trop ancien) :
+     meme relief que « is-you », mais sans l'etiquette « Vous etes sur… » qui serait fausse. */
+  .pick.suggested { border-color:var(--blue2); box-shadow:0 10px 34px rgba(37,99,235,.22); }
+
   /* MOCK WINDOW */
   .mock { max-width:720px; margin:44px auto 0; background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.45); text-align:left; }
   .mock-bar { display:flex; align-items:center; gap:8px; background:var(--card2); padding:10px 14px; border-bottom:1px solid var(--line); }
@@ -176,6 +191,14 @@
       </a>
       <div class="dl-meta">Version <b class="js-win-ver">…</b> · Windows 10/11 (64 bits)</div>
       <div class="youtag">✓ Vous êtes sur Windows</div>
+      <!-- Affiché uniquement si le visiteur est sous Windows 7/8/8.1 (voir le script). -->
+      <div class="oldwin">
+        ⚠️ <b>Votre PC est sous <span class="ow-ver">une version trop ancienne de Windows</span>.</b>
+        DoulGet pour PC nécessite <b>Windows 10 ou 11</b>. Sur votre ordinateur, le logiciel
+        afficherait « n'est pas une application Win32 valide » et ne démarrerait pas.
+        Inutile de télécharger les 195 Mo.
+        <a class="ow-alt" href="#mobile">📱 Utilisez plutôt DoulGet pour Android →</a>
+      </div>
     </div>
   </div>
 
@@ -393,6 +416,28 @@
     } else if (estWindows) {
       var w = document.getElementById('pickWindows');
       if (w) { w.classList.add('is-you'); w.classList.remove('secondary'); }
+
+      // Windows 7 / 8 / 8.1 → le .exe ne peut PAS demarrer (Electron 33 exige Win 10).
+      // « Windows NT 6.1 » = 7, « 6.2 » = 8, « 6.3 » = 8.1, « 10.0 » = 10 et 11.
+      // Fiable ici : Chrome fige la version a « 10.0 » depuis la v113, mais Windows 7
+      // plafonne a Chrome 109 — un vrai PC Win7 annonce donc toujours son vrai numero.
+      var nt = ua.match(/Windows NT ([0-9]+(?:\.[0-9]+)?)/i);
+      if (nt && parseFloat(nt[1]) < 10) {
+        var noms = { '5.1':'Windows XP', '6.0':'Windows Vista', '6.1':'Windows 7',
+                     '6.2':'Windows 8', '6.3':'Windows 8.1' };
+        if (w) {
+          w.classList.add('too-old');
+          var lbl = w.querySelector('.ow-ver');
+          if (lbl && noms[nt[1]]) lbl.textContent = noms[nt[1]];
+          var btn = w.querySelector('.js-win-link');
+          if (btn) { btn.removeAttribute('href'); btn.setAttribute('aria-disabled', 'true'); }
+        }
+        // L'alternative Android devient le choix mis en avant. On utilise « suggested »
+        // et NON « is-you » : le visiteur est sur PC, lui afficher « ✓ Vous etes sur
+        // Android » serait faux.
+        var alt = document.getElementById('pickAndroid');
+        if (alt) alt.classList.add('suggested');
+      }
     }
   })();
 </script>
