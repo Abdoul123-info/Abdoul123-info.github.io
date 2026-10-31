@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DoulGet — Gestionnaire de téléchargements pour Windows et Android</title>
-<meta name="description" content="DoulGet télécharge vos vidéos, musiques et fichiers depuis YouTube, TikTok, Facebook, Instagram et des centaines d'autres sites — en multi-connexions, sur Windows et Android. Extension navigateur incluse. Licence par mobile money (Orange, MTN, Moov, Wave).">
+<meta name="description" content="DoulGet télécharge vos vidéos, musiques et fichiers depuis YouTube, TikTok, Facebook, Instagram et des centaines d'autres sites — en multi-connexions, sur Windows et Android. Extension navigateur incluse. Licence par mobile money (Airtel Money, Moov, Zamani Cash, Amana, MyNita).">
 <link rel="canonical" href="https://abdoul123-info.github.io/">
 <link rel="icon" href="icon.png">
 <meta property="og:title" content="DoulGet — Gestionnaire de téléchargements pour Windows et Android">
@@ -270,7 +270,7 @@
       <div class="feat"><div class="ico">🎬</div><h3>Vidéos &amp; musiques de partout</h3><p>Collez le lien d'une vidéo YouTube, TikTok, Facebook, Instagram… choisissez la qualité (jusqu'à 4K) ou le format audio MP3, et c'est parti. Des centaines de sites sont pris en charge.</p></div>
       <div class="feat"><div class="ico">🧩</div><h3>Extension navigateur complète</h3><p>Sur <b>tous</b> les sites que vous visitez, l'extension détecte vidéos, musiques et fichiers et ajoute un bouton « Télécharger avec DoulGet ». Elle capture même les épisodes d'une série pour les télécharger en lot.</p></div>
       <div class="feat"><div class="ico">⏸️</div><h3>Pause &amp; reprise</h3><p>Coupure d'électricité ou de connexion ? Reprenez vos téléchargements exactement là où ils s'étaient arrêtés.</p></div>
-      <div class="feat"><div class="ico">📱</div><h3>Paiement mobile money</h3><p>Activez votre licence en payant par Orange Money, MTN MoMo, Moov, Wave, MyNita ou Amana. La clé arrive instantanément.</p></div>
+      <div class="feat"><div class="ico">📱</div><h3>Paiement mobile money</h3><p>Payez directement depuis l'application par Airtel Money, Moov Money, Zamani Cash, Amana ou MyNita : votre licence s'active toute seule dès le paiement confirmé. Hors du Niger, achat par WhatsApp.</p></div>
       <div class="feat"><div class="ico">🔄</div><h3>Mises à jour automatiques</h3><p>DoulGet vous prévient quand une nouvelle version est disponible et vérifie l'intégrité de chaque mise à jour (SHA-256).</p></div>
     </div>
   </div>
@@ -382,13 +382,29 @@
     .catch(function(){ /* silencieux : lien de secours déjà en place */ });
 
   // Idem pour DoulGet Mobile : les releases Android sont taguées "android-vX.Y"
-  // (jamais "latest", réservé au .exe Windows) — on prend la plus récente.
-  fetch('https://api.github.com/repos/Abdoul123-info/doulbrowser/releases?per_page=20')
+  // (jamais "latest", réservé au .exe Windows) — on prend la version la PLUS ÉLEVÉE.
+  // Pas la première de la liste : GitHub ne range pas par date de création. Quand deux
+  // tags pointent sur le même commit, il départage par le nom, et « android-v3.9 »
+  // passait devant « android-v3.10 » — le site proposait l'ancienne version.
+  // Comparaison numérique, comme le fait l'application.
+  function versionAndroid(tag){
+    return tag.replace('android-v','').split('.').map(function(n){ return parseInt(n,10) || 0; });
+  }
+  function plusRecente(a, b){
+    var va = versionAndroid(a.tag_name), vb = versionAndroid(b.tag_name);
+    for (var i = 0; i < Math.max(va.length, vb.length); i++){
+      var x = va[i] || 0, y = vb[i] || 0;
+      if (x !== y) return x > y;
+    }
+    return false;
+  }
+  fetch('https://api.github.com/repos/Abdoul123-info/doulbrowser/releases?per_page=50')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(list){
       var rel = null;
       list.forEach(function(x){
-        if (!rel && x.tag_name && x.tag_name.indexOf('android-v') === 0 && !x.draft) rel = x;
+        if (x.tag_name && x.tag_name.indexOf('android-v') === 0 && !x.draft &&
+            (!rel || plusRecente(x, rel))) rel = x;
       });
       if (!rel) return;
       var apk = null;
